@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH -J v-wangxin-test
+#SBATCH -N 1
+#SBATCH -p bme_gpu
+#SBATCH -n 8
+#SBATCH -o sag_x4/train.out
+#SBATCH -e sag_x4/train.err
+#SBATCH --time=6000
+#SBATCH --gres=gpu:1
+echo ${SLURM_JOB_NODELIST}
+echo start on $(date)
+python train_liif.py --config train_edsr-baseline-liif.yaml
+#python demo.py
+echo end on $(date)
